@@ -61,11 +61,11 @@ class UsersController < ApplicationController
   end
 
   # PATCH: /users/5
-  patch "/users/:id/edit" do
+  patch "/users/:id" do
     @user = User.find_by(:id => params[:id])
     @user.update(:username => params[:username])
     @user.save
-    redirect "/users/:id"
+    redirect "/users/#{@user.id}"
   end
 
   # DELETE: /users/5/delete
@@ -73,13 +73,3 @@ class UsersController < ApplicationController
     redirect "/users"
   end
 
-  helpers do
-    def logged_in?
-      !!session[:user_id]
-    end
-
-    def current_user
-      User.find(session[:user_id])
-    end
-  end
-end
