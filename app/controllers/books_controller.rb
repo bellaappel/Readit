@@ -2,13 +2,13 @@ class BooksController < ApplicationController
 
   # GET: /books
   get "/books" do
-    @books = 
-    erb :"/books/index.html"
+    @books = Book.all
+    erb :"/books/index"
   end
 
   # GET: /books/new
   get "/books/new" do
-    erb :"/books/new.html"
+    erb :"/books/new"
   end
 
   # POST: /books
@@ -18,12 +18,12 @@ class BooksController < ApplicationController
 
   # GET: /books/5
   get "/books/:id" do
-    erb :"/books/show.html"
+    erb :"/books/show"
   end
 
   # GET: /books/5/edit
   get "/books/:id/edit" do
-    erb :"/books/edit.html"
+    erb :"/books/edit"
   end
 
   # PATCH: /books/5

@@ -1,1 +1,9 @@
-<h1>This is the Model's index page.</h1>
+<h1>Our Current Bookshelf!</h1>
+<ul>
+    <li><% @books.each do |book| %><br><br>
+        <a href="/books/#{@book.id}<%= book.id %>"><%= book.title %></a>
+    <%end%>
+    </li>
+</ul>
+
+
