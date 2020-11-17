@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   # GET: /users
   get "/users" do
-    erb :"/users/index"
+    erb :"/users/login"
   end
 
   # GET: /users/new
@@ -10,23 +10,45 @@ class UsersController < ApplicationController
     erb :"/users/new"
   end
 
-  get "/users/signup" do
+  get "/users/new" do
     erb :"/users/new"
   end
 
+  post "/users/new" do
+    if params[:username] != ""
+      user = User.new(:username => params[:username], :password => params[:password])
+      if user.save
+        redirect "/users/show"
+      else
+        redirect "/failure"
+      end
+    else
+      redirect "/failure"
+    end
+  end
+
   # POST: /users
-  post "/users" do
-    redirect "/users"
+  post "/users/login" do
+    user = User.find_by(username: params[:username])
+      if user && user.authenticate(params[:password]) 
+        session[:user_id] = user.id
+        redirect "users/show"
+      else
+        redirect "/failure"
+      end
+    redirect "/users/show"
   end
 
   # GET: /users/5
   get "/users/:id" do
-    erb :"/users/show.html"
+    @user= User.find_by(params[:id])
+    erb :"/users/show"
   end
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
-    erb :"/users/edit.html"
+    @user= User.find_by(params[:id])
+    erb :"/users/edit"
   end
 
   # PATCH: /users/5
