@@ -36,23 +36,31 @@ class UsersController < ApplicationController
       else
         redirect "/failure"
       end
-    redirect "/users/show"
+    redirect "/users/:id"
+  end
+
+  get "/users/show" do
+    @user = User.find(session[:user_id])
+    erb :"/users/show"
   end
 
   # GET: /users/5
   get "/users/:id" do
-    @user= User.find_by(params[:id])
+    @user = User.find(params[:id])
     erb :"/users/show"
   end
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
-    @user= User.find_by(params[:id])
+    @user = User.find(params[:id])
     erb :"/users/edit"
   end
 
   # PATCH: /users/5
   patch "/users/:id" do
+    @user = User.find_by_id(params[:id])
+    @user.update(params[:username])
+    @user.save
     redirect "/users/:id"
   end
 
