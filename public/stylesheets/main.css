@@ -45,6 +45,10 @@
     text-align: center;
   }
 
+  a.button {
+    color: coral;
+  }
+
   h2 {
     border-bottom: 2px solid #ccc;
     font-size: 24px;
