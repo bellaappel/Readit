@@ -44,6 +44,10 @@ class UsersController < ApplicationController
     erb :"/users/show"
   end
 
+  get "/failure" do
+    erb :"/users/failure"
+  end
+
   # GET: /users/5
   get "/users/:id" do
     @user = User.find(params[:id])
@@ -57,9 +61,9 @@ class UsersController < ApplicationController
   end
 
   # PATCH: /users/5
-  patch "/users/:id" do
-    @user = User.find_by_id(params[:id])
-    @user.update(params[:username])
+  patch "/users/:id/edit" do
+    @user = User.find_by(:id => params[:id])
+    @user.update(:username => params[:username])
     @user.save
     redirect "/users/:id"
   end

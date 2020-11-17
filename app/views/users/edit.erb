@@ -1,8 +1,8 @@
 <h1>Edit Your Account!</h1>
-<form action='/users/ <%=@user.id %>/edit' method='POST'>
+<form action='/users/<%=@user.id%>/edit' method='POST'>
     <input type="hidden" name="_method" value="patch">
     <label for="username">Username:</label><br>
-  <input id="username" type="text" name="user[username]" value=<%=@user.username%> ><br>
+  <input id="username" type="text" name="user[username]" value="<%=@user.username%>" ><br>
   <input type="submit" value="Edit Username">
   <br>
   <a class="button" href="/">Home</a>
