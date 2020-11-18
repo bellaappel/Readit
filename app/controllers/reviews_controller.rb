@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
 
   # GET: /reviews/new
   get "/reviews/new" do
+    
     erb :"/reviews/new"
   end
 

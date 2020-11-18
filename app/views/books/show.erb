@@ -1,5 +1,5 @@
 
-    <h3>Title:</h3> <%= @books.title %>
+    <h3>Title:</h3><%=@books.title%>
     <br>
     <h4>Author:</h4> <%= @books.author %>
     <br>
@@ -9,5 +9,6 @@
  
 
 <a class="button" href="/books/<%= @books.id %>/edit">Edit Book</a>
-<a class="button" href="/
+<a class="button" href="/reviews/new">Write a Review!</a>
+<a class="button" href="/books/<%=@books.id %>/delete">Delete Book</a>
 <a class="button" href="/books">Bookshelf</a>
