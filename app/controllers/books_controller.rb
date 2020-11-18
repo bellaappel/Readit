@@ -11,16 +11,21 @@ class BooksController < ApplicationController
     erb :"/books/new"
   end
 
-  # POST: /books
+# POST: /books
   post "/books" do
-    redirect "/books"
+    @books = Book.create(params)
+  redirect "/books"
   end
 
-  # GET: /books/5
   get "/books/:id" do
+    @books = Book.find(params[:id])
     erb :"/books/show"
   end
 
+  
+
+  # GET: /books/5
+  
   # GET: /books/5/edit
   get "/books/:id/edit" do
     erb :"/books/edit"
