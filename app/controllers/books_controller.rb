@@ -23,9 +23,6 @@ class BooksController < ApplicationController
   end
 
   
-
-  # GET: /books/5
-  
   # GET: /books/5/edit
   get "/books/:id/edit" do
     erb :"/books/edit"
@@ -35,6 +32,15 @@ class BooksController < ApplicationController
   patch "/books/:id" do
     redirect "/books/:id"
   end
+
+  get "/books/:id/delete" do
+    @books = Book.find(params[:id])
+    if @books.user_id == Helper.current_user(session).id
+      erb :"/books/delete"
+    else
+      "You cannot delete books you don't own."
+    end
+
 
   # DELETE: /books/5/delete
   delete "/books/:id/delete" do
