@@ -1,10 +1,11 @@
 <h1>Reviews</h1>
-<h3>Book:</h3><%=@reviews.book_id%>
+<h3>Book:</h3><%=Book.find_by_id(@review.book_id).title%>
     <br>
-    <h4>User:</h4> <%= @review.user_id %>
+    <h4>User:</h4> <%= User.find_by_id(@review.user_id).username %>
     <br>
-    <h4>Title:</h4> <%= @reviews.title %>
+    <h4>Title:</h4> <%= @review.review_title %>
     <br>
-    <h4>Content:</h4> <%= @reviews.content %>
+    <h4>Content:</h4> <%= @review.review_content %>
    <br>
 <a class="button" href="/">Home</a>
+<a class="button" href="/reviews/<%=@review.id %>/delete">Delete</a>

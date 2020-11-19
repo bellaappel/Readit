@@ -17,19 +17,16 @@ class ReviewsController < ApplicationController
 
   # POST: /reviews
   post "/reviews" do
-    @reviews = Review.create(params)
-    redirect "/reviews/:id"
+    @review = Review.create(params)
+    @review.user_id = session[:user_id]
+    @review.save
+    redirect "/reviews/#{@review.id}"
   end
 
   # GET: /reviews/5
   get "/reviews/:id" do
-    @reviews = Review.find(params[:id])
+    @review = Review.find(params[:id])
     erb :"/reviews/show"
-  end
-
-  # GET: /reviews/5/edit
-  get "/reviews/:id/edit" do
-    erb :"/reviews/edit"
   end
 
   # PATCH: /reviews/5
@@ -37,8 +34,15 @@ class ReviewsController < ApplicationController
     redirect "/reviews/:id"
   end
 
+  get "/reviews/:id/delete" do
+    @review = Review.find(params[:id])
+    erb :"/reviews/delete"
+  end
+
   # DELETE: /reviews/5/delete
-  delete "/reviews/:id/delete" do
+  delete "/reviews/:id" do
+    @review = Review.find(params[:id])
+    @review.delete
     redirect "/reviews"
   end
 end

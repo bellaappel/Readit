@@ -1,11 +1,5 @@
 <h1>Welcome to your bookshelf <%= @user.username %>!</h1>
-Please select books you are interested in! 
-<label><h4>Books!</h4></label>
-    <% Book.all.each do |book| %>
-            <label> <%= book.title %></label>
-            <input type="checkbox" id="book_<%= book.id%>" name ="book.title" value= "<%= book.title %>">
-            <br>
-    <% end %>
+Checkout the reviews you have written
 
 <a class="button" href="/users/<%= @user.id %>/edit">Edit User</a>
 <a class="button" href="/">Home</a>

@@ -1,7 +1,7 @@
 <h1>Write a New Review!</h1>
 <form action="/reviews" method="POST">
   <label for="books">Choose a book:</label>
-        <select name =review[book_ids][]>
+        <select name ="book_id">
         <% Book.all.each do |book| %>
         <option value="<%=book.id%>"><%=book.title%></option>
         <% end %>

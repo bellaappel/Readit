@@ -1,0 +1,7 @@
+<h1>Delete <%= @review.review_title %>?</h1>
+<h1>Deleting this review is permanent!</h1>
+<form method='post' action='/reviews/<%= @review.id %>'>
+    <input type='hidden' name='_method' value="DELETE">
+    <input type='submit' value="Yes, delete this review.">
+    <a class="button" href="/">Home</a>
+</form>

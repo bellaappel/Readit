@@ -1,7 +1,7 @@
 <h1>Current Reviews!</h1>
 <ul>
     <li><% @reviews.each do |review| %><br><br>
-        <a href="/reviews/<%= review.id %>"><%= review.title %></a>
+        <a href="/reviews/<%= review.id %>"><%= review.review_title %></a>
     <%end%>
     </li>
 </ul>
