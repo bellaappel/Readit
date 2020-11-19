@@ -14,6 +14,11 @@ class UsersController < ApplicationController
     erb :"/users/new"
   end
 
+  get '/users/logout' do
+    session.clear
+    redirect to '/'
+  end
+
   post "/users/new" do
     if params[:username] != ""
       user = User.new(:username => params[:username], :password => params[:password])
