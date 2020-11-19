@@ -1,8 +1,9 @@
 <h1>Welcome to your bookshelf <%= @user.username %>!</h1>
 Checkout the reviews you have written
-
+<div class="container">
 <a class="button" href="/users/<%= @user.id %>/edit">Edit User</a>
 <a class="button" href="/">Home</a>
 <a class="button" href="/books/new">Add a Book!</a>
 <a class="button" href="/reviews/new">Write a Review!</a>
 <a class="button" href="/users/logout">Logout!</a>
+</div>

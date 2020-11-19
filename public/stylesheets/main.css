@@ -66,12 +66,13 @@
   }
 
   .head {
-    color: seagreen;
+    color: rosybrown;
     text-align: center;
   }
 
   h1 {
-    color: darkseagreen;
+    text-align: center;
+    color: rosybrown;
     font-size: 36px;
     line-height: 54px;
   }
@@ -80,12 +81,19 @@
     text-align: center;
   }
 
-  a.button {
+  .container {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button {
     color: coral;
   }
 
   a { 
-    color: olive;
+    color: palevioletred;
   }
 
   h2 {
