@@ -10,20 +10,19 @@ class UsersController < ApplicationController
     erb :"/users/new"
   end
 
-  get "/users/new" do
-    erb :"/users/new"
-  end
-
   get '/users/logout' do
     session.clear
     redirect to '/'
   end
 
+ 
+
   post "/users/new" do
     if params[:username] != ""
       user = User.new(:username => params[:username], :password => params[:password])
       if user.save
-        redirect "/users/show"
+        session[:user_id] = user.id
+        redirect "users/show"
       else
         redirect "/failure"
       end
@@ -32,16 +31,23 @@ class UsersController < ApplicationController
     end
   end
 
+
+
   # POST: /users
   post "/users/login" do
     user = User.find_by(username: params[:username])
       if user && user.authenticate(params[:password]) 
         session[:user_id] = user.id
-        redirect "users/show"
+        redirect "/users/show"
       else
         redirect "/failure"
       end
-    redirect "/users/:id"
+      redirect "/users/:id"
+  end
+
+
+  get "/failure" do
+    erb :"/users/failure"
   end
 
   get "/users/show" do
@@ -49,9 +55,6 @@ class UsersController < ApplicationController
     erb :"/users/show"
   end
 
-  get "/failure" do
-    erb :"/users/failure"
-  end
 
   # GET: /users/5
   get "/users/:id" do
@@ -65,11 +68,11 @@ class UsersController < ApplicationController
     erb :"/users/edit"
   end
 
+
   # PATCH: /users/5
   patch "/users/:id" do
     @user = User.find_by(:id => params[:id])
     @user.update(:username => params[:username])
-    @user.save
     redirect "/users/#{@user.id}"
   end
 

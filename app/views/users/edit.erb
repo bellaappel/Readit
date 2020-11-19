@@ -2,7 +2,7 @@
 <form action='/users/<%=@user.id%>' method='POST'>
     <input type="hidden" name="_method" value="patch">
     <label for="username">Username:</label><br>
-  <input id="username" type="text" name="user[username]" value="<%=@user.username%>" ><br>
+  <input id="username" type="text" name="username" value="<%=@user.username%>" ><br>
   <input type="submit" value="Edit Username">
   <br>
   <div class="container">

@@ -1,5 +1,11 @@
-<h1>Welcome to your bookshelf <%= @user.username %>!</h1>
-Checkout the reviews you have written
+<h1>Welcome <%= @user.username %>!</h1>
+Checkout the reviews you have written:
+  <ul>
+    <li><% @user.reviews.each do |review| %><br><br>
+        <a href="/reviews/<%= review.id %>"><%= review.review_title %></a>
+    <%end%>
+    </li>
+</ul>
 <div class="container">
 <a class="button" href="/users/<%= @user.id %>/edit">Edit User</a>
 <a class="button" href="/">Home</a>
