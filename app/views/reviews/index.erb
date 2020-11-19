@@ -1,1 +1,8 @@
-<h1>This is the Model's index page.</h1>
+<h1>Current Reviews!</h1>
+<ul>
+    <li><% @reviews.each do |review| %><br><br>
+        <a href="/reviews/<%= review.id %>"><%= review.title %></a>
+    <%end%>
+    </li>
+</ul>
+<a class="button" href="/">Home</a>

@@ -1,1 +1,10 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1>Reviews</h1>
+<h3>Book:</h3><%=@reviews.book_id%>
+    <br>
+    <h4>User:</h4> <%= @review.user_id %>
+    <br>
+    <h4>Title:</h4> <%= @reviews.title %>
+    <br>
+    <h4>Content:</h4> <%= @reviews.content %>
+   <br>
+<a class="button" href="/">Home</a>

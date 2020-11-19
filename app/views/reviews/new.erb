@@ -1,1 +1,21 @@
 <h1>Write a New Review!</h1>
+<form action="/reviews" method="POST">
+  <label for="books">Choose a book:</label>
+        <select name =review[book_ids][]>
+        <% Book.all.each do |book| %>
+        <option value="<%=book.id%>"><%=book.title%></option>
+        <% end %>
+        </select>
+    </label>
+        <br>
+  <label>Review Title:</label>
+  <br>
+  <input type="text" name="review_title">
+  <br>
+  <label>Review:</label>
+  <br>
+  <textarea id="review_content" name="review_content"></textarea>
+  <input type="submit" value="Add New Review">
+</form>
+    <a class="button" href="/">Home</a>
+</form>

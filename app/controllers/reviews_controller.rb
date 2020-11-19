@@ -2,22 +2,28 @@ class ReviewsController < ApplicationController
 
   # GET: /reviews
   get "/reviews" do
+    @reviews = Review.all
     erb :"/reviews/index"
   end
 
   # GET: /reviews/new
   get "/reviews/new" do
-    
-    erb :"/reviews/new"
+    if Helper.is_logged_in? (session) 
+      erb :"/reviews/new"
+    else
+       "Please login or signup to write a review!"
+    end
   end
 
   # POST: /reviews
   post "/reviews" do
-    redirect "/reviews"
+    @reviews = Review.create(params)
+    redirect "/reviews/:id"
   end
 
   # GET: /reviews/5
   get "/reviews/:id" do
+    @reviews = Review.find(params[:id])
     erb :"/reviews/show"
   end
 
