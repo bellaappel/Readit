@@ -8,6 +8,11 @@ class BooksController < ApplicationController
 
   # GET: /books/new
   get "/books/new" do
+    if Helper.is_logged_in? (session) 
+      erb :"/books/new"
+    else
+       "Please login or signup to add a new book!"
+    end
     erb :"/books/new"
   end
 
