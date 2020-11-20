@@ -51,6 +51,7 @@ class UsersController < ApplicationController
   end
 
   get "/users/show" do
+   @user = User.find_by(params[:username])
     if Helper.is_logged_in?(session)
       erb :"/users/show"
     else 
@@ -62,7 +63,7 @@ class UsersController < ApplicationController
   # GET: /users/5
   get "/users/:id" do
     @user = User.find(params[:id])
-    if @user.is_logged_in?
+    if Helper.is_logged_in?(session)
       erb :"/users/show"
     else 
       redirect "/failure"
