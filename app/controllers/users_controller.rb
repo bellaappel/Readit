@@ -51,15 +51,22 @@ class UsersController < ApplicationController
   end
 
   get "/users/show" do
-    @user = User.find(session[:user_id])
-    erb :"/users/show"
+    if Helper.is_logged_in?(session)
+      erb :"/users/show"
+    else 
+      redirect "/failure"
+    end
   end
 
 
   # GET: /users/5
   get "/users/:id" do
     @user = User.find(params[:id])
-    erb :"/users/show"
+    if @user.is_logged_in?
+      erb :"/users/show"
+    else 
+      redirect "/failure"
+    end
   end
 
   # GET: /users/5/edit
