@@ -45,20 +45,21 @@ class UsersController < ApplicationController
       redirect "/users/:id"
   end
 
+  get "/users/show" do
+    @user = Helper.current_user(session)
+     if Helper.is_logged_in?(session)
+       erb :"/users/show"
+     else 
+       redirect "/failure"
+     end
+   end
+ 
 
   get "/failure" do
     erb :"/users/failure"
   end
 
-  get "/users/show" do
-   @user = User.find_by(params[:username])
-    if Helper.is_logged_in?(session)
-      erb :"/users/show"
-    else 
-      redirect "/failure"
-    end
-  end
-
+  
 
   # GET: /users/5
   get "/users/:id" do
