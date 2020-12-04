@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
 
   get "/reviews/:id/delete" do
     @review = Review.find(params[:id])
-    if @review.user_id = Helper.current_user(session)
+    if @review.user_id == Helper.current_user(session).id
       erb :"/reviews/delete"
     else
       "You did not write this review!"
@@ -46,7 +46,7 @@ class ReviewsController < ApplicationController
   # DELETE: /reviews/5/delete
   delete "/reviews/:id" do
     @review = Review.find(params[:id])
-    if @review.user_id = Helper.current_user(session)
+    if @review.user_id == Helper.current_user(session).id
       @review.delete
     else 
       "You can't delete a review you did not write!"

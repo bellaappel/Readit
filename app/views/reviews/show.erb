@@ -9,5 +9,7 @@
    <br>
 <div class="container">
 <a class="button" href="/">Home</a>
+<% if @review.user_id == Helper.current_user(session).id %>
 <a class="button" href="/reviews/<%=@review.id %>/delete">Delete</a>
+<% end %>
 </div>
