@@ -18,7 +18,7 @@ class UsersController < ApplicationController
  
 
   post "/users/new" do
-    if params[:username] != ""
+    if User.new(params).valid? && params[:username] != ""
       user = User.new(:username => params[:username], :password => params[:password])
       if user.save
         session[:user_id] = user.id

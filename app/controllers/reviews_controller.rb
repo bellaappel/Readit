@@ -36,13 +36,21 @@ class ReviewsController < ApplicationController
 
   get "/reviews/:id/delete" do
     @review = Review.find(params[:id])
-    erb :"/reviews/delete"
+    if @review.user_id = Helper.current_user(session)
+      erb :"/reviews/delete"
+    else
+      "You did not write this review!"
+    end
   end
 
   # DELETE: /reviews/5/delete
   delete "/reviews/:id" do
     @review = Review.find(params[:id])
-    @review.delete
-    redirect "/reviews"
+    if @review.user_id = Helper.current_user(session)
+      @review.delete
+    else 
+      "You can't delete a review you did not write!"
+      redirect "/reviews"
+    end
   end
 end

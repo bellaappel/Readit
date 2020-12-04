@@ -16,10 +16,16 @@ class BooksController < ApplicationController
     erb :"/books/new"
   end
 
+  get "/books/most_reviewed" do
+    b = Book.all
+    @most_reviewed_book = b.max_by {|book| book.reviews.count}
+    erb :"/books/most_reviewed"
+  end
+
 # POST: /books
   post "/books" do
     @books = Book.create(params)
-  redirect "/books"
+    redirect "/books"
   end
 
   get "/books/:id" do
@@ -28,6 +34,7 @@ class BooksController < ApplicationController
   end
 
   
+    
   # GET: /books/5/edit
   get "/books/:id/edit" do
     @books = Book.find(params[:id])
@@ -45,7 +52,9 @@ class BooksController < ApplicationController
   end
 
   get "/books/:id/delete" do
-    @books = Book.find(params[:id])
+    
+    
+      @books = Book.find(params[:id])
     erb :"/books/delete"
   end
 
@@ -56,3 +65,7 @@ class BooksController < ApplicationController
     redirect "/books"
   end
 end
+
+
+#Write a custom route so that when a user visits /books/most-reviewed the user sees the book with the most reviews
+#HINTL Use the max_by Ruby method to help you get the book with the most reviews
