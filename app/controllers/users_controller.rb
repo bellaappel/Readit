@@ -27,7 +27,8 @@ class UsersController < ApplicationController
         redirect "/failure"
       end
     else
-      redirect "/failure"
+      @message = "Sorry that username has already been choosen! Please select a new one."
+      erb :'/users/new'
     end
   end
 
